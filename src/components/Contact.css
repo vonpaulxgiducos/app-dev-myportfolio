@@ -142,6 +142,7 @@ a.contact-value:hover {
   font-family: inherit;
   transition: all 0.3s ease;
   background: var(--bg-white);
+  color: var(--text-primary);
 }
 
 .form-group input:focus,

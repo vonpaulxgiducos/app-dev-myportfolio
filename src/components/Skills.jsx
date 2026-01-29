@@ -4,7 +4,7 @@ function Skills() {
   const skillCategories = [
     {
       title: 'Frontend',
-      icon: '🎨',
+      icon: '💻',
       skills: [
         { name: 'React.js', level: 75 },
         { name: 'HTML5', level: 90 },
@@ -15,7 +15,7 @@ function Skills() {
     },
     {
       title: 'Backend',
-      icon: '⚙️',
+      icon: '🔧',
       skills: [
         { name: 'Laravel', level: 85 },
         { name: 'PHP', level: 80 },
@@ -26,7 +26,7 @@ function Skills() {
     },
     {
       title: 'Tools & Others',
-      icon: '🛠️',
+      icon: '�',
       skills: [
         { name: 'Git & GitHub', level: 80 },
         { name: 'Vercel', level: 70 },

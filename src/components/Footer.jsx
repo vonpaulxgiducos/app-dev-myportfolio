@@ -86,7 +86,7 @@ function Footer() {
               © {currentYear} Von Giducos. All rights reserved. Built with React.js & Vite
             </p>
             <button onClick={scrollToTop} className="back-to-top">
-              ↑ Back to Top
+              ↑
             </button>
           </div>
         </div>

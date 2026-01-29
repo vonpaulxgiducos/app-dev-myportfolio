@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './Navbar.css'
+import ThemeToggle from './ThemeToggle'
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -54,6 +55,9 @@ function Navbar() {
             <a onClick={() => scrollToSection('contact')} className="nav-link cta-button">
               Contact
             </a>
+          </li>
+          <li className="theme-toggle-wrapper">
+            <ThemeToggle />
           </li>
         </ul>
       </div>

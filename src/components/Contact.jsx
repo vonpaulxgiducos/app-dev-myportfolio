@@ -35,7 +35,7 @@ function Contact() {
           submitting: false,
           submitted: true,
           error: false,
-          message: '✅ Message sent successfully! I will get back to you soon.'
+          message: 'Message sent successfully! I will get back to you soon.'
         })
         setFormData({ name: '', email: '', message: '' })
         e.target.reset()
@@ -66,25 +66,25 @@ function Contact() {
 
   const contactInfo = [
     {
-      icon: '📧',
+      icon: '✉',
       label: 'Email',
       value: 'vonpaul.giducos@email.com',
       link: 'mailto:vonpaul.giducos@email.com'
     },
     {
-      icon: '📱',
+      icon: '☎',
       label: 'Phone',
       value: '+63 976 042 9330',
       link: 'tel:+639760429330'
     },
     {
-      icon: '📍',
+      icon: '⚲',
       label: 'Location',
       value: 'Philippines',
       link: null
     },
     {
-      icon: '💼',
+      icon: '🔗',
       label: 'LinkedIn',
       value: 'linkedin.com/in/vongiducos',
       link: 'https://linkedin.com/in/vongiducos'
