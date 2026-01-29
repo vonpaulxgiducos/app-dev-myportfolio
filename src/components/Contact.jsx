@@ -7,12 +7,54 @@ function Contact() {
     email: '',
     message: ''
   })
+  const [status, setStatus] = useState({
+    submitting: false,
+    submitted: false,
+    error: false,
+    message: ''
+  })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Form submission logic here
-    alert('Thank you for your message! I will get back to you soon.')
-    setFormData({ name: '', email: '', message: '' })
+    setStatus({ submitting: true, submitted: false, error: false, message: '' })
+
+    try {
+      // Create FormData from the form element
+      const formDataToSend = new FormData(e.target)
+      formDataToSend.append('access_key', '9b15141a-f37e-4dc1-b221-7ec5c13689ef')
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setStatus({
+          submitting: false,
+          submitted: true,
+          error: false,
+          message: '✅ Message sent successfully! I will get back to you soon.'
+        })
+        setFormData({ name: '', email: '', message: '' })
+        e.target.reset()
+        
+        // Clear success message after 5 seconds
+        setTimeout(() => {
+          setStatus({ submitting: false, submitted: false, error: false, message: '' })
+        }, 5000)
+      } else {
+        throw new Error('Form submission failed')
+      }
+    } catch (error) {
+      setStatus({
+        submitting: false,
+        submitted: false,
+        error: true,
+        message: '❌ Something went wrong. Please try again or email me directly.'
+      })
+    }
   }
 
   const handleChange = (e) => {
@@ -81,6 +123,13 @@ function Contact() {
 
           <div className="contact-form-section">
             <h3>Send a Message</h3>
+            
+            {status.message && (
+              <div className={`form-status ${status.error ? 'error' : 'success'}`}>
+                {status.message}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-group">
                 <label htmlFor="name">Name</label>
@@ -118,8 +167,12 @@ function Contact() {
                   placeholder="Your message here..."
                 ></textarea>
               </div>
-              <button type="submit" className="submit-button">
-                Send Message
+              <button 
+                type="submit" 
+                className="submit-button"
+                disabled={status.submitting}
+              >
+                {status.submitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
